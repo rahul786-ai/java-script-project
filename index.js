@@ -28,25 +28,28 @@ document.querySelector('.check').addEventListener('click', function () {
     }
     //when guess is wrong
   } else if (guess != secretnumber) {
-    if (score < guess) {
+    if (secretnumber > guess) {
+      console.log('rahul');
       displayMeassage('too low🎉');
       score--;
+      console.log(score);
       document.querySelector('.score').textContent = score;
+    } else if (secretnumber < guess) {
+      score--;
+      document.querySelector('.score').textContent = score;
+      displayMeassage('Too high🙄 ');
     } else {
       document.querySelector('.message').textContent = 'you loss the game😜';
       document.querySelector('.score').textContent = 0;
     }
   }
   //when guess is high
-  else if (guess > score) {
-    displayMeassage('Too high🙄 ');
-  }
 });
 
 document.querySelector('.again').addEventListener('click', function () {
   score = 20;
   secretnumber = Math.trunc(Math.random() * 20) + 1;
-
+  document.querySelector('body').style.backgroundColor = '#000';
   displayMeassage('Start guessing....');
   document.querySelector('.score').textContent = score;
   document.querySelector('.number').textContent = '?';
